@@ -1,5 +1,0 @@
-class Thesis < ActiveRecord::Base
-	belongs_to :publication
-	has_many :authorships
-	has_many :people, :through => :authorships
-end

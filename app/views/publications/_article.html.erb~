@@ -1,6 +1,0 @@
-<% fields_for article do |f| %>
-  <p>
-    <%= f.label : %><br />
-    <%= f.text_field :name %>
-  </p>
-<% end %>
