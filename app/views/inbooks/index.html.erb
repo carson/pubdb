@@ -1,0 +1,18 @@
+<h1>Listing inbooks</h1>
+
+<table>
+  <tr>
+  </tr>
+
+<% for inbook in @inbooks %>
+  <tr>
+    <td><%= link_to 'Show', inbook %></td>
+    <td><%= link_to 'Edit', edit_inbook_path(inbook) %></td>
+    <td><%= link_to 'Destroy', inbook, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New inbook', new_inbook_path %>

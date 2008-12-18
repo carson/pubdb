@@ -1,0 +1,21 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  article_id: 1
+  book_id: 1
+  conference_id: 1
+  inbook_id: 1
+  thesis_id: 1
+  techreport_id: 1
+  misc_id: 1
+  person_id: 1
+
+two:
+  article_id: 1
+  book_id: 1
+  conference_id: 1
+  inbook_id: 1
+  thesis_id: 1
+  techreport_id: 1
+  misc_id: 1
+  person_id: 1

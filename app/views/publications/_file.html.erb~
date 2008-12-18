@@ -1,0 +1,11 @@
+<div class="file">
+<% new_or_existing = file.new_record? ? 'new' : 'existing' %>
+<% prefix = "publication[#{new_or_existing}_publication_file_attributes][]" %>
+<% fields_for prefix, file do |file_form| -%>
+  <p>
+    File: <%= file_form.file_field :uploaded_data %>
+    <%= link_to_function "remove" , "$(this).up('.file').remove()" %>
+  </p>
+<% end -%>
+</div>
+
