@@ -1,6 +1,15 @@
 class PublicationsController < ApplicationController
   layout "application"
-  
+
+  before_filter :login_required
+
+#   before_filter :authenticated
+#   def authenticated
+#     if not logged_in?
+#       redirect_to("/login")
+#     end
+#   end
+
   # GET /publications
   # GET /publications.xml
   def index
@@ -49,6 +58,15 @@ class PublicationsController < ApplicationController
   # POST /publications.xml
   def create
     @publication = Publication.new(params[:publication])
+    case params[:publication][:publication_type]
+      when 'Article':     @publication.build_article(params[:article])
+      when 'Book':        @publication.build_book(params[:book])
+      when 'Conference':  @publication.build_conference(params[:conference])
+      when 'Inbook':      @publication.build_inbook(params[:inbook])
+      when 'Misc':        @publication.build_misc(params[:misc])
+      when 'Techreport':  @publication.build_techreport(params[:techreport])
+      when 'Thesis':      @publication.build_thesis(params[:thesis])
+    end
 
     respond_to do |format|
       if @publication.save
@@ -81,18 +99,18 @@ class PublicationsController < ApplicationController
       @publication.techreport.destroy if !@publication.techreport.nil?
       @publication.thesis.destroy     if !@publication.thesis.nil?
       # Create new
-      case params[:publication_type]
-        when 'Article':     @publication.article.create(params[:article])
-        when 'Book':        @publication.book.create(params[:book])
-        when 'Conference':  @publication.conference.create(params[:conference])
-        when 'Inbook':      @publication.inbook.create(params[:inbook])
-        when 'Misc':        @publication.misc.create(params[:misc])
-        when 'Techreport':  @publication.techreport.create(params[:techreport])
-        when 'Thesis':      @publication.thesis.create(params[:thesis])
+      case params[:publication][:publication_type]
+        when 'Article':     @publication.create_article(params[:article])
+        when 'Book':        @publication.create_book(params[:book])
+        when 'Conference':  @publication.create_conference(params[:conference])
+        when 'Inbook':      @publication.create_inbook(params[:inbook])
+        when 'Misc':        @publication.create_misc(params[:misc])
+        when 'Techreport':  @publication.create_techreport(params[:techreport])
+        when 'Thesis':      @publication.create_thesis(params[:thesis])
       end
     else
       # Update attributes
-      case params[:publication_type]
+      case params[:publication][:publication_type]
         when 'Article':     @publication.article.attributes = params[:article]
         when 'Book':        @publication.book.attributes = params[:book]
         when 'Conference':  @publication.conference.attributes = params[:conference]

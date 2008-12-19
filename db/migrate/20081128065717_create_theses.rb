@@ -6,7 +6,6 @@ class CreateTheses < ActiveRecord::Migration
       t.column  :publication_date, :date
       t.column  :school, :string
       t.column  :address, :string
-      t.column  :pages, :integer
       t.column  :abstract, :text
 
       t.timestamps

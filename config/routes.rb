@@ -1,29 +1,24 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :users
 
+  #restful-authentication specific configuration
+  map.home '', :controller => 'home', :action => 'index'
+  map.resources :users
   map.resource :session
+  map.signup '/signup', :controller => 'users', :action => 'new'
+  map.login  '/login', :controller => 'session', :action => 'new'
+  map.logout '/logout',  :controller => 'session', :action => 'destroy'
 
   map.resources :groups
 
   map.resources :people
 
-  map.resources :miscs
-
-  map.resources :techreports
-
-  map.resources :theses
-
-  map.resources :inbooks
-
-  map.resources :conferences
-
-  map.resources :books
-
-  map.resources :articles
-
   map.resources :projects
 
   map.resources :publications
+  
+  map.resources :events
+
+
 
   # The priority is based upon order of creation: first created -> highest priority.
 

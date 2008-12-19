@@ -1,5 +1,21 @@
 <% fields_for thesis do |f| %>
   <p>
+    <%= f.label :publication_date %><br />
+    <%= f.date_select :publication_date %>
+  </p>
+  <p>
+    <%= f.label :degree %><br />
+    <%= f.select :degree, {'Bachelor'=>'Bachelor','Master'=>'Master','Ph.D.'=>'Ph.D.'} %>
+  </p>
+  <p>
+    <%= f.label :school %><br />
+    <%= f.text_field :school %>
+  </p>
+  <p>
+    <%= f.label :address %><br />
+    <%= f.text_field :address %>
+  </p>
+  <p>
     <%= f.label :abstract %><br />
     <%= f.text_area :abstract %>
   </p>

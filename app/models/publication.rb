@@ -1,35 +1,44 @@
 class Publication < ActiveRecord::Base
   has_many :authorships, :dependent => :destroy
   has_many :people, :through => :authorships
-	has_many :publication_projects, :dependent => :destroy
-	has_many :projects, :through => :publication_projects
+  has_many :publication_projects, :dependent => :destroy
+  has_many :projects, :through => :publication_projects
   has_many :publication_files, :dependent => :destroy
   # Type specific models. Note that these are different from files
-	has_one :article, :dependent => :destroy
-	has_one :book, :dependent => :destroy
-	has_one :conference, :dependent => :destroy
-	has_one :inbook, :dependent => :destroy
-	has_one :misc, :dependent => :destroy
-	has_one :techreport, :dependent => :destroy
-	has_one :thesis, :dependent => :destroy
+  has_one :article, :dependent => :destroy
+  has_one :book, :dependent => :destroy
+  has_one :conference, :dependent => :destroy
+  has_one :inbook, :dependent => :destroy
+  has_one :misc, :dependent => :destroy
+  has_one :techreport, :dependent => :destroy
+  has_one :thesis, :dependent => :destroy
+  
+  validates_presence_of :title, :if => :empty_japanese_title
+  validates_presence_of :title_ja, :if => :empty_english_title
+  
+  def empty_english_title
+    not self.title.nil?
+  end
+
+  def empty_japanese_title
+    not self.title_ja.nil?
+  end
 	
-	validates_presence_of :title
-	validates_presence_of :title_ja
-	validates_associated :authorships
-	validates_associated :publication_projects
-	validates_associated :publication_files
-	validates_associated :article
-	validates_associated :book
-	validates_associated :conference
-	validates_associated :inbook
-	validates_associated :misc
-	validates_associated :techreport
-	validates_associated :thesis
-	
-	# Methods to dynamically handle multiple authorships
-	after_update :save_authorships
-	
-	def new_authorship_attributes=(authorship_attributes)
+  validates_associated :authorships
+  validates_associated :publication_projects
+  validates_associated :publication_files
+  validates_associated :article
+  validates_associated :book
+  validates_associated :conference
+  validates_associated :inbook
+  validates_associated :misc
+  validates_associated :techreport
+  validates_associated :thesis
+  
+  # Methods to dynamically handle multiple authorships
+  after_update :save_authorships
+  
+  def new_authorship_attributes=(authorship_attributes)
     authorship_attributes.each do |attributes|
       authorships.build(attributes)
     end

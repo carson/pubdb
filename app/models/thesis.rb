@@ -1,3 +1,3 @@
 class Thesis < ActiveRecord::Base
-	belongs_to :publication
+  belongs_to :publication
 end

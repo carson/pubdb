@@ -1,6 +1,7 @@
 class CreateConferences < ActiveRecord::Migration
   def self.up
     create_table :conferences do |t|
+      t.column	:event_id, :integer
       t.column	:publication_id, :integer
       t.column  :proceedings_title, :string
       t.column  :proceedings_title_ja, :string

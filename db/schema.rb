@@ -51,7 +51,6 @@ ActiveRecord::Schema.define(:version => 20081204104451) do
     t.date     "publication_date"
     t.string   "publisher"
     t.string   "address"
-    t.integer  "pages"
     t.string   "edition"
     t.string   "series"
     t.string   "isbn"
@@ -61,6 +60,7 @@ ActiveRecord::Schema.define(:version => 20081204104451) do
   end
 
   create_table "conferences", :force => true do |t|
+    t.integer  "event_id"
     t.integer  "publication_id"
     t.string   "proceedings_title"
     t.string   "proceedings_title_ja"
@@ -212,7 +212,6 @@ ActiveRecord::Schema.define(:version => 20081204104451) do
 
   create_table "techreports", :force => true do |t|
     t.integer  "publication_id"
-    t.integer  "pages"
     t.date     "publication_date"
     t.string   "publisher"
     t.string   "address"
@@ -230,7 +229,6 @@ ActiveRecord::Schema.define(:version => 20081204104451) do
     t.date     "publication_date"
     t.string   "school"
     t.string   "address"
-    t.integer  "pages"
     t.text     "abstract"
     t.datetime "created_at"
     t.datetime "updated_at"

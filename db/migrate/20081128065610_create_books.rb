@@ -6,7 +6,6 @@ class CreateBooks < ActiveRecord::Migration
       t.column  :publication_date, :date
       t.column  :publisher, :string
       t.column  :address, :string
-      t.column  :pages, :integer
       t.column  :edition, :string
       t.column  :series, :string
       t.column  :isbn, :string

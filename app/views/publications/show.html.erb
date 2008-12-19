@@ -1,12 +1,15 @@
 <p>
+  Title:
   <%= @publication.title %>
 </p>
 <p>
+  Year:
   <%= @publication.year.year %>
 </p>
 <p>
+  File(s):
   <% @publication.publication_files.each do |f| %>
-    <%= f.public_filename %><br />
+    <%= f.public_filename %>
   <% end %>
 </p>
 <%= link_to 'Edit', edit_publication_path(@publication) %> |
