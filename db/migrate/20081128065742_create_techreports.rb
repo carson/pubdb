@@ -9,6 +9,7 @@ class CreateTechreports < ActiveRecord::Migration
       t.column  :series, :string
       t.column  :number, :integer
       t.column  :abstract, :text
+      t.column  :abstract_ja, :text
 
       t.timestamps
     end

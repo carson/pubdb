@@ -2,11 +2,13 @@
 
 <table>
   <tr>
+    <th>Title</td>
+    <th>Year</td>
   </tr>
 
 <% for publication in @publications %>
   <tr>
-    <td><%= publication.title %></td>
+    <td><%=h publication.title %></td>
     <td><%= publication.year.year %></td>
     <td>
       <% for file in publication.publication_files %>

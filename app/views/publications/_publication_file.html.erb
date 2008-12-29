@@ -5,7 +5,8 @@
   <p>
     File:
     <%= publication_file_form.collection_select :publication_file_type_id, PublicationFileType.find(:all), :id, :description %>
-    <%= publication_file_form.file_field :uploaded_data %>
+    <%= publication_file_form.file_field :uploaded_data if publication_file.new_record? %>
+    <%= publication_file.filename if !publication_file.new_record? %>
     <%= link_to_function "remove" , "$(this).up('.publication_file').remove()" %>
   </p>
   <p>

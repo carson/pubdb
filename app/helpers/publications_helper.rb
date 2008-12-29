@@ -18,4 +18,11 @@ module PublicationsHelper
     end
   end
   
+  def new_event_link(name)
+    link_to_function name do |page|
+      page.replace_html :event_fields, :partial => 'event', :object => Event.new
+      page.hide :event_select
+    end
+  end
+  
 end

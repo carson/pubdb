@@ -1,4 +1,6 @@
 class PeopleController < ApplicationController
+  layout "application"
+  
   # GET /people
   # GET /people.xml
   def index

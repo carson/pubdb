@@ -2,10 +2,20 @@
 
 <table>
   <tr>
+    <th>Last name</th>
+    <th>First name</th>
+    <th>Last name ja</th>
+    <th>First name ja</th>
+    <th>Mail</th>
   </tr>
 
 <% for person in @people %>
   <tr>
+    <td><%=h person.last_name %></td>
+    <td><%=h person.first_name %></td>
+    <td><%=h person.last_name_ja %></td>
+    <td><%=h person.first_name_ja %></td>
+    <td><%=h person.mail %></td>
     <td><%= link_to 'Show', person %></td>
     <td><%= link_to 'Edit', edit_person_path(person) %></td>
     <td><%= link_to 'Destroy', person, :confirm => 'Are you sure?', :method => :delete %></td>

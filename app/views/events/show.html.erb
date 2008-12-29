@@ -1,3 +1,19 @@
+<%= render :partial => 'show', :locals => {:event => @event} %>
 
-<%= link_to 'Edit', edit_event_path(@event) %> |
-<%= link_to 'Back', events_path %>
+<h2>Activities</h2>
+<table>
+<% for activity in @activities %>
+  <tr>
+    <td><%= link_to activity.person.last_name, [@event, activity] %></td>
+  </tr>
+<% end %>
+</table>
+<p>
+  <%= link_to 'New activity', new_event_activity_path(@event) %>
+</p>
+
+<p>
+  <%= link_to 'Back', events_path %> |
+  <%= link_to 'Destroy', @event, :confirm => 'Are you sure?', :method => :delete %>
+</p>
+

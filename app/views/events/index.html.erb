@@ -2,14 +2,20 @@
 
 <table>
   <tr>
+    <th>Name</th>
+    <th>Name ja</th>
+    <th>Location</th>
+    <th>Organization</th>
+    <th>Start</th>
+    <th>End</th>
   </tr>
 
 <% for event in @events %>
   <tr>
-    <td><%= event.name %></td>
-    <td><%= event.name_ja %></td>
-    <td><%= event.location %></td>
-    <td><%= event.organization %></td>
+    <td><%=h event.name %></td>
+    <td><%=h event.name_ja %></td>
+    <td><%=h event.location %></td>
+    <td><%=h event.organization %></td>
     <td><%= event.start_date %></td>
     <td><%= event.end_date %></td>
     <td><%= link_to 'Show', event %></td>

@@ -2,10 +2,14 @@
 
 <table>
   <tr>
+    <th>Name</th>
+    <th>Name ja</th>
   </tr>
 
 <% for group in @groups %>
   <tr>
+    <td><%=h group.name %></td>
+    <td><%=h group.name_ja %></td>
     <td><%= link_to 'Show', group %></td>
     <td><%= link_to 'Edit', edit_group_path(group) %></td>
     <td><%= link_to 'Destroy', group, :confirm => 'Are you sure?', :method => :delete %></td>

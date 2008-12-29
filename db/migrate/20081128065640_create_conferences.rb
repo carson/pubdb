@@ -8,6 +8,7 @@ class CreateConferences < ActiveRecord::Migration
       t.column  :start_page, :integer
       t.column  :end_page, :integer
       t.column  :abstract, :text
+      t.column  :abstract_ja, :text
       t.column  :is_invited, :boolean
       t.column  :is_review, :boolean
 

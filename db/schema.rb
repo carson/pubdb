@@ -9,12 +9,12 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20081204104451) do
+ActiveRecord::Schema.define(:version => 20081229061452) do
 
   create_table "activities", :force => true do |t|
     t.integer  "person_id"
     t.integer  "event_id"
-    t.text     "description"
+    t.text     "description", :limit => 16777215
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -30,7 +30,8 @@ ActiveRecord::Schema.define(:version => 20081204104451) do
     t.date     "publication_date"
     t.string   "publisher"
     t.string   "address"
-    t.text     "abstract"
+    t.text     "abstract",         :limit => 16777215
+    t.text     "abstract_ja",      :limit => 16777215
     t.boolean  "is_invited"
     t.boolean  "is_review"
     t.datetime "created_at"
@@ -54,7 +55,7 @@ ActiveRecord::Schema.define(:version => 20081204104451) do
     t.string   "edition"
     t.string   "series"
     t.string   "isbn"
-    t.text     "abstract"
+    t.text     "abstract",         :limit => 16777215
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -66,7 +67,8 @@ ActiveRecord::Schema.define(:version => 20081204104451) do
     t.string   "proceedings_title_ja"
     t.integer  "start_page"
     t.integer  "end_page"
-    t.text     "abstract"
+    t.text     "abstract",             :limit => 16777215
+    t.text     "abstract_ja",          :limit => 16777215
     t.boolean  "is_invited"
     t.boolean  "is_review"
     t.datetime "created_at"
@@ -98,8 +100,8 @@ ActiveRecord::Schema.define(:version => 20081204104451) do
   create_table "groups", :force => true do |t|
     t.string   "name"
     t.string   "name_ja"
-    t.text     "description"
-    t.text     "description_ja"
+    t.text     "description",    :limit => 16777215
+    t.text     "description_ja", :limit => 16777215
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -117,7 +119,7 @@ ActiveRecord::Schema.define(:version => 20081204104451) do
     t.integer  "end_page"
     t.string   "edition"
     t.string   "series"
-    t.text     "abstract"
+    t.text     "abstract",         :limit => 16777215
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -131,8 +133,8 @@ ActiveRecord::Schema.define(:version => 20081204104451) do
 
   create_table "miscs", :force => true do |t|
     t.integer  "publication_id"
-    t.text     "description"
-    t.text     "description_ja"
+    t.text     "description",    :limit => 16777215
+    t.text     "description_ja", :limit => 16777215
     t.string   "url"
     t.date     "date"
     t.datetime "created_at"
@@ -158,7 +160,9 @@ ActiveRecord::Schema.define(:version => 20081204104451) do
 
   create_table "projects", :force => true do |t|
     t.string   "name"
-    t.text     "description"
+    t.string   "name_ja"
+    t.text     "description",    :limit => 16777215
+    t.text     "description_ja", :limit => 16777215
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -218,7 +222,8 @@ ActiveRecord::Schema.define(:version => 20081204104451) do
     t.string   "edition"
     t.string   "series"
     t.integer  "number"
-    t.text     "abstract"
+    t.text     "abstract",         :limit => 16777215
+    t.text     "abstract_ja",      :limit => 16777215
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -229,7 +234,7 @@ ActiveRecord::Schema.define(:version => 20081204104451) do
     t.date     "publication_date"
     t.string   "school"
     t.string   "address"
-    t.text     "abstract"
+    t.text     "abstract",         :limit => 16777215
     t.datetime "created_at"
     t.datetime "updated_at"
   end

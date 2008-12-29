@@ -34,6 +34,20 @@ class Publication < ActiveRecord::Base
   validates_associated :misc
   validates_associated :techreport
   validates_associated :thesis
+
+
+  # Methods to update subfields (article, book, etc)
+  after_update :save_subfields
+      
+  def save_subfields
+    article.save(false)    if !article.nil?
+    book.save(false)       if !book.nil?
+    conference.save(false) if !conference.nil?
+    inbook.save(false)     if !inbook.nil?
+    misc.save(false)       if !misc.nil?
+    techreport.save(false) if !techreport.nil?
+    thesis.save(false)     if !thesis.nil?
+  end
   
   # Methods to dynamically handle multiple authorships
   after_update :save_authorships

@@ -12,6 +12,7 @@ class CreateArticles < ActiveRecord::Migration
       t.column  :publisher, :string
       t.column  :address, :string
       t.column  :abstract, :text
+      t.column  :abstract_ja, :text
       t.column  :is_invited, :boolean
       t.column  :is_review, :boolean
 

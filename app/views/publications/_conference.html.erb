@@ -1,15 +1,22 @@
 <% fields_for conference do |f| %>
   <p>
+    <div id="event_select">
+      <%= f.label :event_id %><br />
+      <%= f.collection_select :event_id, Event.find(:all), :id, :name %>
+      <%# Defined in PublicationsHelper %>
+      <%= new_event_link 'New event' %>
+    </div>
+    <div id="event_fields">
+      <%# New event fields go here %>
+    </div>
+  </p>
+  <p>
     <%= f.label :proceedings_title %><br />
     <%= f.text_field :proceedings_title %>
   </p>
   <p>
     <%= f.label :proceedings_title_ja %><br />
     <%= f.text_field :proceedings_title_ja %>
-  </p>
-  <p>
-    <%= f.label :event_id %><br />
-    <%= f.collection_select :event_id, Event.find(:all), :id, :name %>
   </p>
   <p>
     <%= f.label :start_page %>

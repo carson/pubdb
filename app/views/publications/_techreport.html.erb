@@ -1,9 +1,5 @@
 <% fields_for techreport do |f| %>
   <p>
-    <%= f.label :abstract %><br />
-    <%= f.text_area :abstract %>
-  </p>
-  <p>
     <%= f.label :publication_date %><br />
     <%= f.date_select :publication_date %>
   </p>
@@ -22,5 +18,9 @@
   <p>
     <%= f.label :number %>
     <%= f.text_field :number, :size => 4 %>
+  </p>
+  <p>
+    <%= f.label :abstract %><br />
+    <%= f.text_area :abstract %>
   </p>
 <% end %>

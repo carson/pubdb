@@ -57,6 +57,9 @@ class PublicationsController < ApplicationController
   # POST /publications
   # POST /publications.xml
   def create
+    # Delete event_id from conference if the client sent a new event
+    params[:conference][:event_id] = nil if !params[:event].nil?
+    
     @publication = Publication.new(params[:publication])
     case params[:publication][:publication_type]
       when 'Article':     @publication.build_article(params[:article])
@@ -67,6 +70,8 @@ class PublicationsController < ApplicationController
       when 'Techreport':  @publication.build_techreport(params[:techreport])
       when 'Thesis':      @publication.build_thesis(params[:thesis])
     end
+    # Create a new event if the client sent one
+    @publication.conference.create_event(params[:event]) if !params[:event].nil?
 
     respond_to do |format|
       if @publication.save
@@ -86,6 +91,8 @@ class PublicationsController < ApplicationController
     params[:publication][:existing_authorship_attributes] ||= {}
     params[:publication][:existing_publication_project_attributes] ||= {}
     params[:publication][:existing_publication_file_attributes] ||= {}
+    # Delete event_id from conference if the client sent a new event
+    params[:conference][:event_id] = nil if !params[:event].nil?
     
     @publication = Publication.find(params[:id])
     
@@ -120,6 +127,8 @@ class PublicationsController < ApplicationController
         when 'Thesis':      @publication.thesis.attributes = params[:thesis]
       end
     end
+    # Create a new event if the client sent one
+    @publication.conference.create_event(params[:event]) if !params[:event].nil?
 
     respond_to do |format|
       if @publication.update_attributes(params[:publication])
